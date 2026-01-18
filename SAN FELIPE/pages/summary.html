@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Municipality of San Felipe | Dashboard</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: "#b91c1c",
+        dark: "#7f1d1d",
+      },
+    },
+  },
+};
+</script>
+
+<style>
+.office-card {
+  backdrop-filter: blur(14px);
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(185,28,28,0.2);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.office-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+</style>
+
+</head>
+
+<body class="flex flex-col min-h-screen bg-gray-100 text-gray-900">
+
+
+
+
+<!-- NAVBAR -->
+<header class="fixed top-0 left-0 w-full z-40 bg-primary shadow-lg">
+  <div class="relative flex items-center px-6 py-4">
+
+    <!-- LOGO + TITLE (same as dashboard) -->
+    <div
+      class="flex items-center gap-3 text-white font-bold text-lg
+             mx-auto md:mx-0"
+    >
+      <img
+        src="../assets/logo.png"
+        alt="Logo"
+        class="w-10 h-10 rounded-full"
+      />
+      <span class="whitespace-nowrap">
+        Municipality of San Felipe
+      </span>
+    </div>
+
+    <!-- MOBILE MENU BUTTON (kept for consistency, but menu is minimal) -->
+    <button
+      onclick="toggleMenu()"
+      class="md:hidden text-white text-2xl absolute right-6"
+      aria-label="Menu"
+    >
+      ☰
+    </button>
+
+    <!-- DESKTOP RIGHT SIDE (USER NAME ONLY) -->
+    <div class="hidden md:flex ml-auto text-white font-medium">
+      <span id="userNameDisplay"></span>
+    </div>
+  </div>
+
+  <!-- MOBILE MENU (USER NAME ONLY) -->
+  <div
+    id="mobileMenu"
+    class="hidden md:hidden bg-primary text-white px-6 pb-6
+           border-t border-white/20"
+  >
+    <div class="pt-4 font-medium">
+      <span id="userNameDisplayMobile"></span>
+    </div>
+  </div>
+</header>
+
+<main class="flex-grow">
+<!-- HERO SECTION -->
+<section class="pt-32 pb-20 bg-gradient-to-r from-primary via-red-700 to-dark relative overflow-hidden">
+  <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_left,white,transparent_60%)]"></div>
+
+  <div class="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 px-6 items-center animate-fadeUp">
+
+    <!-- LEFT -->
+    <div class="flex justify-center">
+      <img src="../assets/logo.png" alt="Municipality of San Felipe"
+           class="w-64 md:w-80 drop-shadow-2xl" />
+    </div>
+
+    <!-- RIGHT -->
+    <div class="text-white space-y-6">
+     <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+        Welcome to the <span class="text-red-200">San Felipe Portal, <span id="heroUserName" class="text-red-200"></span></span>
+      </h1>
+
+      <p class="text-lg max-w-xl opacity-95">
+        A unified digital gateway providing fast, transparent, and reliable
+        public services for the citizens of San Felipe.
+      </p><br><br>
+
+      <a href= "dashboard.html" class="mt-4 bg-white text-primary font-bold px-8 py-3 rounded-lg 
+                     hover:bg-red-100 transition shadow-lg">
+        Back to Home
+    </a>
+    </div>
+
+  </div>
+</section>
+  
+  <section id="citizen-charter" class="py-20 bg-gray-50 searchable">
+  <h2 class="text-4xl font-extrabold mb-6 text-center">Summary</h2>
+  <p class="text-center text-gray-700 max-w-4xl mx-auto">
+  <section id="summary" class="max-w-5xl mx-auto space-y-6 text-left">
+<section id="summary" class="max-w-5xl mx-auto space-y-10 text-left">
+<!-- SECTION 1: INTRODUCTION -->
+<section id="introduction" class="office-card mb-12">
+
+  <h3 class="text-2xl font-extrabold text-primary mb-4">
+    1. Introduction
+  </h3>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Under Republic Act No. 9003, otherwise known as the
+    <strong>Ecological Solid Waste Management Act</strong>, all dumpsites shall be closed,
+    and open dumping as well as controlled dumpsites are strictly prohibited.
+    The law mandates the formulation and implementation of a Solid Waste Management Plan
+    to establish an effective system for waste reduction and proper waste handling.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    In consideration of directives issued by the Environmental Bureau of the DENR
+    and the Office of the Ombudsman, the Municipality recognizes the urgent need to
+    formulate a <strong>Municipal Ecological Solid Waste Management Plan</strong>
+    to ensure compliance and environmental sustainability.
+  </p>
+
+  <!-- 1.1 PURPOSE -->
+  <h4 class="text-xl font-bold text-primary mb-3">
+    1.1 Purpose
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    The Municipality’s vision for Solid Waste Management is anchored on the full
+    adoption and implementation of the provisions of RA 9003. One of the major challenges
+    in implementing the law is achieving social acceptability and active participation
+    of the community.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Addressing this challenge requires the conduct of extensive information and education
+    campaigns, as well as the dedication and initiative of concerned officials, sectors,
+    and partner agencies to ensure effective implementation.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The intent of RA 9003 and its impact on Solid Waste Management are especially significant
+    in the practice of <strong>segregation at source</strong>, which must primarily be
+    implemented at the household level.
+  </p>
+
+  <!-- APPROACH -->
+  <h4 class="text-xl font-bold text-primary mb-3">
+    Approach
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed">
+    Waste Characterization Studies shall be conducted at the barangay level to generate
+    accurate and reliable data for planning and projection purposes. These studies shall
+    be carried out by the Technical Working Group (TWG) or the Municipal Solid Waste
+    Management Board in coordination with barangay officials.
+  </p>
+
+</section>
+
+ <!-- SECTION 2: MUNICIPAL PROFILE -->
+<section id="municipal-profile" class="office-card mb-12">
+
+  <h3 class="text-2xl font-extrabold text-primary mb-6">
+    2. Municipal Profile
+  </h3>
+
+  <!-- 2.1 LOCATION -->
+  <h4 class="text-xl font-bold text-primary mb-3">
+    2.1 Location
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    The Municipality of San Felipe is located in the central part of the Province of
+    Zambales. It is bounded on the north by the Municipality of Cabangan, on the south
+    by the Municipality of San Narciso, on the west by the Philippine Sea, and on the
+    east by the Municipalities of San Marcelino and Botolan. San Felipe is approximately
+    200 kilometers away from Manila by land transportation.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The municipality has a total land area of <strong>11,160 hectares</strong>
+    (or <strong>111.60 square kilometers</strong>). In comparison, the Province of
+    Zambales has a total land area of 3,713.40 square kilometers. San Felipe therefore
+    accounts for approximately <strong>3.10 percent</strong> of the total land area of
+    the province.
+  </p>
+
+   <img src="../assets/sanfe.png" alt="San Felipe Map" class="w-98 mx-auto rounded-2xl shadow-lg mb-6" />
+
+  <!-- 2.2 HISTORY -->
+  <h4 class="text-xl font-bold text-primary mb-3">
+    2.2 History
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    The Municipality of San Felipe was one of the early villages along the coastal
+    region of Zambales during the pre-Spanish period. The first inhabitants were Malays
+    who preferred to settle in the lowlands, while Negrito and Aeta communities occupied
+    the upland and hinterland areas. Early Ilocano settlers eventually arrived and
+    established communities in Hindol, later known as Sindol, and in a village further
+    south known as Bobulon.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Hindol was a Zambal Aeta name derived from a tree that was once abundant in the area,
+    while Bobulon was also named after a type of tree. Another account suggests that the
+    name Bobulon originated from the favorable winds (<em>bolun</em>) experienced by the
+    first Ilocano settlers sailing from Paoay, Ilocos Norte to the area. The name Bobulon
+    was officially changed to <strong>San Felipe</strong> when the town was founded in
+    1853.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    The name San Felipe was derived from one of the “saintly” brothers from the Ilocos
+    region—Marcelino, Antonio, Narciso, and Felipe—who settled in different pueblos in
+    the southern part of Bobulon. Marcelino settled in what is now San Marcelino, Antonio
+    in San Antonio, Narciso in San Narciso, and Felipe in the area now known as San
+    Felipe. As a result, the native inhabitants of these towns are predominantly
+    Ilocanos from Ilocandia.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    For several years, San Felipe has been recognized as the
+    <strong>“Greenest and Cleanest”</strong> municipality in the province, and later in
+    Region III and the entire country, due to its effective clean-and-green initiatives
+    and solid waste management programs. Today, San Felipeneans continue to uphold this
+    legacy through collective efforts led by the local government, barangay units, and
+    active community participation.
+  </p>
+
+   <section class="max-w-6xl mx-auto mt-12">
+  <h3 class="text-2xl font-extrabold text-primary mb-2">
+    2.3 Population
+  </h3>
+  <p class="text-gray-600 mb-6">
+    Total Population by Barangay, Census Years 2007 and 2010<br>
+    Municipality of San Felipe, Zambales
+  </p>
+
+  <div class="overflow-x-auto rounded-xl shadow border border-red-200">
+    <table class="min-w-full text-sm text-left bg-white">
+      <thead class="bg-primary text-white">
+        <tr>
+          <th rowspan="2" class="px-4 py-3 border-r border-red-300">Barangay</th>
+          <th colspan="2" class="px-4 py-3 text-center border-r border-red-300">2007 Census</th>
+          <th colspan="2" class="px-4 py-3 text-center">2010 Census</th>
+        </tr>
+        <tr class="bg-red-700">
+          <th class="px-4 py-2 text-center">Population</th>
+          <th class="px-4 py-2 text-center border-r border-red-300">% Share</th>
+          <th class="px-4 py-2 text-center">Population</th>
+          <th class="px-4 py-2 text-center">% Share</th>
+        </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-200">
+        <tr>
+          <td class="px-4 py-2 font-medium">Amagna (Pob.)</td>
+          <td class="text-center">1,282</td>
+          <td class="text-center">6%</td>
+          <td class="text-center">1,298</td>
+          <td class="text-center">6%</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2 font-medium">Apostol (Pob.)</td>
+          <td class="text-center">1,922</td>
+          <td class="text-center">9%</td>
+          <td class="text-center">1,792</td>
+          <td class="text-center">8%</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2 font-medium">Balincaguing</td>
+          <td class="text-center">1,017</td>
+          <td class="text-center">5%</td>
+          <td class="text-center">978</td>
+          <td class="text-center">4%</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2 font-medium">Farañal (Pob.)</td>
+          <td class="text-center">1,810</td>
+          <td class="text-center">8%</td>
+          <td class="text-center">1,820</td>
+          <td class="text-center">8%</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2 font-medium">Feria (Pob.)</td>
+          <td class="text-center">890</td>
+          <td class="text-center">4%</td>
+          <td class="text-center">972</td>
+          <td class="text-center">4%</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2 font-medium">Maloma</td>
+          <td class="text-center">4,408</td>
+          <td class="text-center">21%</td>
+          <td class="text-center">4,608</td>
+          <td class="text-center">21%</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2 font-medium">Mangicmot (Pob.)</td>
+          <td class="text-center">1,609</td>
+          <td class="text-center">8%</td>
+          <td class="text-center">1,636</td>
+          <td class="text-center">7%</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2 font-medium">Rosete (Pob.)</td>
+          <td class="text-center">1,341</td>
+          <td class="text-center">6%</td>
+          <td class="text-center">1,463</td>
+          <td class="text-center">7%</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2 font-medium">San Rafael</td>
+          <td class="text-center">1,127</td>
+          <td class="text-center">5%</td>
+          <td class="text-center">1,077</td>
+          <td class="text-center">5%</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2 font-medium">Sto. Niño</td>
+          <td class="text-center">4,021</td>
+          <td class="text-center">19%</td>
+          <td class="text-center">4,246</td>
+          <td class="text-center">19%</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2 font-medium">Sindol</td>
+          <td class="text-center">1,895</td>
+          <td class="text-center">9%</td>
+          <td class="text-center">2,130</td>
+          <td class="text-center">10%</td>
+        </tr>
+      </tbody>
+
+      <tfoot class="bg-gray-100 font-bold">
+        <tr>
+          <td class="px-4 py-3 text-right">TOTAL</td>
+          <td class="text-center">21,322</td>
+          <td class="text-center"></td>
+          <td class="text-center">22,020</td>
+          <td class="text-center"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</section>
+
+<!-- 2.4 ECONOMIC PROFILE / LAND USE -->
+
+<section class="max-w-6xl mx-auto mt-12">
+  <h3 class="text-2xl font-extrabold text-primary mb-6">
+    2.4 Economic Profile / Land Use
+  </h3>
+
+  <div class="overflow-x-auto">
+    <table class="w-full border border-gray-300 text-sm md:text-base">
+      <thead class="bg-red-700 text-white">
+        <tr>
+          <th class="px-4 py-3 text-left border border-red-800">Category</th>
+          <th class="px-4 py-3 text-center border border-red-800">Area (ha)</th>
+          <th class="px-4 py-3 text-center border border-red-800">% Distribution</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white">
+
+        <tr class="hover:bg-gray-50">
+          <td class="px-4 py-2 border font-semibold">
+            1. Residential
+          </td>
+          <td class="px-4 py-2 border text-center">1,794</td>
+          <td class="px-4 py-2 border text-center">16.07%</td>
+        </tr>
+
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border pl-8">
+            – Commercial
+          </td>
+          <td class="px-4 py-2 border text-center">300</td>
+          <td class="px-4 py-2 border text-center">2.70%</td>
+        </tr>
+
+        <tr class="bg-gray-50">
+          <td class="px-4 py-2 border pl-8">
+            – Institutional
+          </td>
+          <td class="px-4 py-2 border text-center">613</td>
+          <td class="px-4 py-2 border text-center">5.50%</td>
+        </tr>
+
+        <tr class="hover:bg-gray-50">
+          <td class="px-4 py-2 border font-semibold">
+            2. Forest
+          </td>
+          <td class="px-4 py-2 border text-center">3,253.00</td>
+          <td class="px-4 py-2 border text-center">29.14%</td>
+        </tr>
+
+        <tr class="hover:bg-gray-50">
+          <td class="px-4 py-2 border font-semibold">
+            3. Swamps / Fishponds / Rivers / Creeks
+          </td>
+          <td class="px-4 py-2 border text-center">1,755.00</td>
+          <td class="px-4 py-2 border text-center">15.72%</td>
+        </tr>
+
+        <tr class="hover:bg-gray-50">
+          <td class="px-4 py-2 border font-semibold">
+            4. Pasture and Grazing
+          </td>
+          <td class="px-4 py-2 border text-center">1,793.00</td>
+          <td class="px-4 py-2 border text-center">16.07%</td>
+        </tr>
+
+        <tr class="hover:bg-gray-50">
+          <td class="px-4 py-2 border font-semibold">
+            5. Agricultural
+          </td>
+          <td class="px-4 py-2 border text-center">1,630.00</td>
+          <td class="px-4 py-2 border text-center">14.60%</td>
+        </tr>
+
+        <tr class="hover:bg-gray-50">
+          <td class="px-4 py-2 border font-semibold">
+            6. Industrial / Agro-Industrial
+          </td>
+          <td class="px-4 py-2 border text-center">12.00</td>
+          <td class="px-4 py-2 border text-center">0.11%</td>
+        </tr>
+
+        <tr class="hover:bg-gray-50">
+          <td class="px-4 py-2 border font-semibold">
+            7. Open Spaces
+          </td>
+          <td class="px-4 py-2 border text-center">10.00</td>
+          <td class="px-4 py-2 border text-center">0.09%</td>
+        </tr>
+
+        <tr class="bg-gray-100 font-bold">
+          <td class="px-4 py-3 border text-right">
+            TOTAL
+          </td>
+          <td class="px-4 py-3 border text-center">11,160.00</td>
+          <td class="px-4 py-3 border text-center">100.00%</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</section><br>
+
+
+
+  <h3 class="text-2xl font-extrabold text-primary mb-6">
+    Transportation
+  </h3>
+
+  <!-- PROFILE OF THE EXISTING SITUATION -->
+  <h4 class="text-xl font-bold text-primary mb-3">
+    Profile of the Existing Situation
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The Municipality of San Felipe is connected to and accessible by both land and water
+    transportation. Major land routes include the Sta. Cruz–San Felipe route passing
+    through the provincial capital town of Iba, Zambales, extending southward to the
+    City of Olongapo and Metro Manila via the Subic Bay Freeport Zone. These routes
+    provide vital access for the movement of people, goods, and services within and
+    outside the municipality.
+  </p>
+
+  <!-- ROADS AND BRIDGES -->
+  <h4 class="text-xl font-bold text-primary mb-3">
+    Roads and Bridges
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed">
+    At present, San Felipe has an estimated total road length of approximately
+    <strong>34.7 kilometers</strong>, classified into four (4) categories:
+    national, provincial, municipal, and barangay roads. Provincial roads comprise
+    the largest portion, with an approximate length of <strong>15.65 kilometers</strong>,
+    followed by barangay roads with a total length of <strong>9.28 kilometers</strong>.
+    Road pavements within the municipality consist of concrete, asphalt, and
+    dirt/earth fill surfaces, with dirt or earth-filled roads covering a total length
+    of <strong>17.23 kilometers</strong>.
+  </p> <br>
+
+
+  <h4 class="text-xl font-bold text-primary mb-4">
+    Table: Inventory of Roads in San Felipe, Zambales
+  </h4>
+
+  <div class="overflow-x-auto">
+    <table class="w-full border border-gray-300 text-sm md:text-base">
+      <thead class="bg-red-700 text-white">
+        <tr>
+          <th class="px-4 py-3 text-left border border-red-800">
+            Type of Pavement
+          </th>
+          <th class="px-4 py-3 text-center border border-red-800">
+            National (km)
+          </th>
+          <th class="px-4 py-3 text-center border border-red-800">
+            Provincial (km)
+          </th>
+          <th class="px-4 py-3 text-center border border-red-800">
+            Municipal (km)
+          </th>
+          <th class="px-4 py-3 text-center border border-red-800">
+            Barangay (km)
+          </th>
+          <th class="px-4 py-3 text-center border border-red-800">
+            Total (km)
+          </th>
+        </tr>
+      </thead>
+
+      <tbody class="bg-white">
+
+        <tr class="hover:bg-gray-50">
+          <td class="px-4 py-2 border font-semibold">
+            Concrete
+          </td>
+          <td class="px-4 py-2 border text-center">–</td>
+          <td class="px-4 py-2 border text-center">9.000</td>
+          <td class="px-4 py-2 border text-center">5.902</td>
+          <td class="px-4 py-2 border text-center">7.776</td>
+          <td class="px-4 py-2 border text-center">22.678</td>
+        </tr>
+
+        <tr class="hover:bg-gray-50">
+          <td class="px-4 py-2 border font-semibold">
+            Asphalt
+          </td>
+          <td class="px-4 py-2 border text-center">6.215</td>
+          <td class="px-4 py-2 border text-center">2.500</td>
+          <td class="px-4 py-2 border text-center">3.340</td>
+          <td class="px-4 py-2 border text-center">0.000</td>
+          <td class="px-4 py-2 border text-center">12.055</td>
+        </tr>
+
+        <tr class="hover:bg-gray-50">
+          <td class="px-4 py-2 border font-semibold">
+            Gravel
+          </td>
+          <td class="px-4 py-2 border text-center">–</td>
+          <td class="px-4 py-2 border text-center">4.000</td>
+          <td class="px-4 py-2 border text-center">5.033</td>
+          <td class="px-4 py-2 border text-center">11.096</td>
+          <td class="px-4 py-2 border text-center">20.129</td>
+        </tr>
+
+        <tr class="hover:bg-gray-50">
+          <td class="px-4 py-2 border font-semibold">
+            Dirt / Earthfill
+          </td>
+          <td class="px-4 py-2 border text-center">–</td>
+          <td class="px-4 py-2 border text-center">–</td>
+          <td class="px-4 py-2 border text-center">10.362</td>
+          <td class="px-4 py-2 border text-center">15.441</td>
+          <td class="px-4 py-2 border text-center">28.304</td>
+        </tr>
+
+        <tr class="bg-gray-100 font-bold">
+          <td class="px-4 py-3 border text-right">
+            TOTAL
+          </td>
+          <td class="px-4 py-3 border text-center">6.215</td>
+          <td class="px-4 py-3 border text-center">18.000</td>
+          <td class="px-4 py-3 border text-center">24.637</td>
+          <td class="px-4 py-3 border text-center">34.313</td>
+          <td class="px-4 py-3 border text-center">83.166</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text-sm text-gray-500 mt-3 italic">
+    Source: MPDO Office
+  </p>
+
+</div><br>
+
+
+ <h4 class="text-xl font-bold text-primary mb-3">
+    Transport
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed">
+   The riding public of the municipality and its ability to move and circulate goods freely 
+   depends on private and government owned vehicles such as buses, mini-buses, bancas and 
+   tricycles. From the town proper to barangays, jeeps and tricycles are available.  
+   Approximately about 20 jeeps plying around and in nearby municipalities and about 900 
+   registered tricycle units although the number increases from time to time. Buses plying to
+    Sta. Cruz-Metro Manila and Manila to Sta. Cruz are available as early as 3:00 o’clock in 
+    the morning up to late 11:00 0’clock in the evening. For shorter distance, tricycles are 
+    available to transport peoples and goods.
+
+  </p> <br>
+
+   <p class="text-gray-700 leading-relaxed">
+  The other means of transport services is the water transportation that is available to 
+  coastal barangays as well as in barangays located in islands of nearby municipalities.  
+  Motorboats and bancas are the only means of transportation used by fisherfolks in their 
+  fishing livelihood as well as to bring their catch and products to the market.
+  </p> <br>
+
+  
+  <h3 class="text-2xl font-extrabold text-primary mb-6">
+    2.5 Physical Characteristics
+  </h3>
+
+  <!-- TOPOGRAPHY -->
+  <h4 class="text-xl font-bold text-primary mb-3">
+    Topography
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The Municipality of San Felipe has varied terrain characterized by flat lands,
+    upland and rolling areas, as well as forested and mountainous regions. Approximately
+    <strong>40 percent</strong> of the municipality consists of flat lands located
+    primarily on the western side of the mountain ranges, making these areas suitable
+    for agriculture, residential, commercial, and industrial development.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    About <strong>15 percent</strong> of the total land area is composed of upland and
+    rolling terrain, while the remaining <strong>45 percent</strong> comprises forested
+    and mountainous areas. The western portion of the mountain range is generally flat
+    and gently slopes toward the west, ultimately ending at the South China Sea.
+  </p>
+
+  <!-- BARANGAY BOUNDARIES -->
+  <h4 class="text-xl font-bold text-primary mb-3">
+    Barangay Boundaries
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    San Felipe is politically subdivided into eleven (11) barangays. Six (6) barangays
+    are located within the town proper (poblacion), while five (5) barangays are situated
+    outside the poblacion and are considered rural areas.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Among these barangays, Balincaguing is the most remote, located in the eastern portion
+    of the municipality approximately <strong>8.15 kilometers</strong> from the poblacion
+    center and the national road. Barangay Maloma is situated about
+    <strong>5.10 kilometers</strong> from the poblacion center and lies along the national
+    highway, while Barangay Sindol is only <strong>1.5 kilometers</strong> from the town
+    center and is also accessible via the national road.
+  </p>
+
+  <!-- CLIMATE AND RAINFALL -->
+  <h4 class="text-xl font-bold text-primary mb-3">
+    Climate and Rainfall
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The municipality experiences two distinct seasons, similar to other municipalities
+    in the province: the wet (rainy) season and the dry season. The wet season generally
+    occurs from <strong>May to October</strong>, while the remainder of the year is
+    relatively dry with occasional rainfall dispersed throughout the province.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Typhoons occasionally affect the municipality; however, the mountain ranges on the
+    eastern side provide natural protection. In most cases, damage to crops and
+    properties is primarily caused by heavy rainfall and flooding rather than strong
+    winds.
+  </p>
+
+  <!-- TYPE OF SOIL -->
+  <h4 class="text-xl font-bold text-primary mb-3">
+    Type of Soil
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    San Felipe has six major types of soil distributed across the municipality.
+    Antipolo clay comprises approximately <strong>26 percent</strong> of the land area,
+    located mainly in the eastern and parts of the western portions. This soil type is
+    suitable for lowland and upland rice, vegetables, and fruit trees.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Around <strong>16 percent</strong> of the municipality consists of Angeles sand,
+    which is suitable for lowland rice, vegetables, sugarcane, and root crops. Angeles
+    fine sand accounts for about <strong>15 percent</strong> of the land area, found
+    primarily in the southwestern portion, and is suitable for lowland rice, root crops,
+    vegetables, corn, and sugarcane.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    Beach sand comprises approximately <strong>14 percent</strong> of the land area,
+    located along the western coastal portion of the municipality. This soil type is
+    suitable for trees such as giant ipil-ipil, agoo, kakawati, and similar species.
+    Another <strong>14 percent</strong> consists of Cabangan clay loam found in the
+    northwestern portion, which is suitable for lowland rice, vegetables, and sugarcane.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Cabangan swampy loam accounts for about <strong>25 percent</strong> of the land area
+    and is found in the central portion of the municipality, particularly between
+    mountain ranges and small valleys. This soil type is suitable for lowland and upland
+    rice, vegetables, and fruit trees.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Following the eruption of Mt. Pinatubo in June 1991, many areas were covered with
+    one to two feet of lahar deposits. Agricultural lands remain under rehabilitation,
+    with ongoing recovery efforts utilizing bulldozers and tractors.
+  </p>
+
+  <!-- WATER RESOURCES -->
+  <h4 class="text-xl font-bold text-primary mb-3">
+    Water Resources
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Several rivers originating from the eastern mountain ranges converge into Apga Lake,
+    where the Apga irrigation system is located. Other significant water bodies include
+    Sukit Lake and Nilasin Lake. Major rivers include the Sto. Tomas River at Sitio
+    Macolcol, Bangar River, Gabor River, the old Sto. Tomas River, and the Maloma River.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Potable drinking water sourced from mountain springs serves rural communities in
+    Sitio Apga, Nanguloan, and nearby sitios. These rivers also function as natural
+    drainage outlets during the rainy season.
+  </p>
+
+  <!-- TIMBER RESOURCES -->
+  <h4 class="text-xl font-bold text-primary mb-3">
+    Timber Resources
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    In the past, San Felipe was one of the timber-producing municipalities in Zambales,
+    where tree species such as narra, yakal, tindalo, maupajo, calantas, apitong, and
+    others were harvested. One major cause of forest denudation was unregulated logging
+    by lumber concessionaires who failed to replace cut trees.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    As a result of careless logging practices, forest areas became denuded. During the
+    wet season, flooding occurs, posing risks to life and property due to reduced forest
+    cover.
+  </p>
+
+  <!-- MINERAL RESOURCES -->
+  <h4 class="text-xl font-bold text-primary mb-3">
+    Mineral Resources
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    The mountain ranges on the eastern side of the municipality are rich in mineral
+    resources. Ongoing exploration has identified the presence of asbestos, chromite,
+    and copper deposits in these areas.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Following the 1991 eruption of Mt. Pinatubo and the continuous flow of lahar through
+    major river systems such as the Maloma River, Maculcol–Sto. Tomas River, and Gabor
+    River, extensive deposits of lahar sand containing magnetite have accumulated along
+    these waterways.
+  </p>
+
+  <!-- NON-MINERAL RESOURCES -->
+  <h4 class="text-xl font-bold text-primary mb-3">
+    Non-Mineral Resources
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed mb-6">
+    Non-mineral resources in the municipality include sand, gravel, earth, stones, and
+    boulders. Bamboo, boho, rattan, and cogon grass grow abundantly in forest areas and
+    are commonly used by residents as indigenous building materials. Rattan is also
+    utilized in the production of furniture and handicrafts.
+  </p>
+
+  <!-- FLORA AND FAUNA -->
+  <h4 class="text-xl font-bold text-primary mb-3">
+    Flora and Fauna
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    The favorable climate and geographic features of San Felipe provide excellent
+    conditions for plant growth and agricultural productivity. Common fruit trees
+    include mango, star apple, coconut, and guava. Bamboo, boho, rattan, and cogon are
+    widely used for housing materials and livelihood purposes.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Orchids such as waling-waling, along with ornamental and flowering plants, are
+    propagated to enhance the town’s aesthetic appeal. Agricultural crops such as rice,
+    corn, and vegetables contribute significantly to local economic development. Wild
+    doves and ducks are among the most common fauna, especially with hunting now
+    prohibited.
+  </p>
+
+</section>
+</section>
+
+
+<section id="introduction" class="office-card mb-12">
+
+  <h3 class="text-2xl font-extrabold text-primary mb-4">
+    3. Religion
+  </h3>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    The San Felipeneans are generally religious and has a deep reverence to their 
+    Patron Saint, the <strong>Apo san Roque</strong>, lover of animals and the environment. 
+    Religion consist of the Methodist, Iglesia Filipina Independiente, the 
+    Roman Catholic Church denominations. There are other Christian religions with their 
+    churches established around the municipality such as the Jesus is Lord Church, 
+    Mormon Church and others. The local parish of the Catholic Church is dedicated to the 
+    Patron Saint, the Apo San Roque. San Felipe, Zambales is also the site of the Cathedral
+    of the Iglesia Filipina Independiente where the Bishop of the said religious sect hold 
+    its seat.
+  </p>
+
+</section>
+
+<section id="introduction" class="office-card mb-12">
+
+  <h3 class="text-2xl font-extrabold text-primary mb-4">
+    4. Festivals, Fiestas And Community Activities
+  </h3>
+
+
+  <h4 class="text-xl font-bold text-primary mb-3">
+    Panagkakadua-an Festival
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    To promote the unique brand of unity, reunions and family bonds of the people, 
+    the Panagkakadua-an Festival to be held a week before the Holy Week every three 
+    (3) years which has become a venue to promote products such as the longganisa and the 
+    chicharon (bagnet) among others.
+  </p>
+
+  <img src="../assets/festival.jpg" alt="Panagkakadua-an Festival" class="w-98 mx-auto rounded-2xl shadow-lg mb-6" />
+  
+  <h4 class="text-xl font-bold text-primary mb-3">
+    Community Affairs
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed">
+    Conducted every December in celebration of the community Christmas affair, it has been 
+    an opportunity to gather the people in an assembly, recognize outstanding achievers of 
+    the community and give honor to various sectors including the balikbayans.
+  </p><br>
+
+  <img src="../assets/affair.jpg" alt="Community Affair" class="w-98 mx-auto rounded-2xl shadow-lg mb-6" />
+  
+
+    <h4 class="text-xl font-bold text-primary mb-3">
+    Foundation Day
+  </h4>
+
+  <p class="text-gray-700 leading-relaxed">
+    Held every 1st of March, it is an opportunity for every San Felipenean to look back to 
+    its humble beginnings and cherish its successes and accomplishment in songs, dances and 
+    tributes ultimately to deepen the sense of pride to its people for its history and 
+    heritage.
+  </p>
+
+   <img src="../assets/founding.jpg" alt="Founding Anniversarry" class="w-98 mx-auto rounded-2xl shadow-lg mb-6" />
+
+</section>
+</main>
+
+
+<!-- FOOTER -->
+<footer class="bg-primary text-white py-6 text-center mt-auto w-full shadow-inner">
+  © 2026 Municipality of San Felipe
+</footer>
+
+
+
+<!-- SCRIPTS -->
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("hidden");
+}
+
+function filterContent(value) {
+  document.querySelectorAll(".searchable").forEach(item => {
+    item.style.display = item.innerText.toLowerCase().includes(value)
+      ? "block"
+      : "none";
+  });
+}
+
+document.getElementById("searchInput").addEventListener("keyup", function () {
+  filterContent(this.value.toLowerCase());
+});
+
+document.getElementById("searchInputMobile").addEventListener("keyup", function () {
+  filterContent(this.value.toLowerCase());
+});
+
+
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  if (!currentUser) {
+    // Not logged in → go back to login
+    window.location.href = "index.html";
+  } else {
+    // Desktop navbar
+    const desktopName = document.getElementById("userNameDisplay");
+    if (desktopName) desktopName.textContent = currentUser.name;
+
+    // Mobile navbar
+    const mobileName = document.getElementById("userNameDisplayMobile");
+    if (mobileName) mobileName.textContent = currentUser.name;
+
+    // Hero section
+    const heroName = document.getElementById("heroUserName");
+    if (heroName) heroName.textContent = currentUser.name;
+  }
+
+
+</script>
+
+</body>
+</html>
